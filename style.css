@@ -1,0 +1,572 @@
+/* ==========================================================================
+   THE HOUSE OF WISDOM — a reading companion to science in the Islamic
+   Golden Age.  Pure CSS, no build step.  Two themes: parchment (light)
+   and night-sky (dark), switched via [data-theme] on <html>.
+   ========================================================================== */
+
+/* ---------- 1. Design tokens ------------------------------------------- */
+
+:root {
+  /* Parchment (light) theme */
+  --bg:          #f1e7d0;   /* aged paper */
+  --bg-deep:     #e9dcbe;   /* darker paper, section bands */
+  --bg-raised:   #f8f1e0;   /* cards */
+  --ink:         #2e2618;   /* main text — walnut ink */
+  --ink-soft:    #5c5138;   /* secondary text */
+  --ink-faint:   #8a7c5c;   /* captions, hairlines */
+  --teal:        #135e5a;   /* deep teal — headings, links */
+  --teal-soft:   #1e6e5e;
+  --gold:        #a97e2f;   /* gold leaf — accents, ornament */
+  --gold-bright: #c79a3b;
+  --rubric:      #8a3324;   /* rubrication red — footnote marks */
+  --line:        #cbbb92;   /* hairline rules */
+  --shadow:      0 1px 2px rgb(46 38 24 / .08), 0 8px 28px rgb(46 38 24 / .10);
+  --shadow-lift: 0 2px 4px rgb(46 38 24 / .10), 0 18px 44px rgb(46 38 24 / .16);
+  --star:        #a97e2f;
+
+  --font-display: "Cormorant Garamond", "Times New Roman", serif;
+  --font-body:    "Spectral", Georgia, serif;
+  --font-arabic:  "Amiri", serif;
+
+  --content-w: 46rem;
+  --toc-w: 15.5rem;
+}
+
+[data-theme="dark"] {
+  /* Night-sky (dark) theme — manuscript ink and lapis night */
+  --bg:          #0d1520;
+  --bg-deep:     #0a111a;
+  --bg-raised:   #14202e;
+  --ink:         #e7dcc0;
+  --ink-soft:    #b3a685;
+  --ink-faint:   #7d7358;
+  --teal:        #56b8ae;
+  --teal-soft:   #4aa596;
+  --gold:        #d5a94e;
+  --gold-bright: #e2bd6b;
+  --rubric:      #d3805f;
+  --line:        #2c3a4c;
+  --shadow:      0 1px 2px rgb(0 0 0 / .5), 0 10px 30px rgb(0 0 0 / .45);
+  --shadow-lift: 0 2px 6px rgb(0 0 0 / .55), 0 20px 50px rgb(0 0 0 / .55);
+  --star:        #e2bd6b;
+}
+
+/* ---------- 2. Base ------------------------------------------------------ */
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.72;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+  transition: background-color .45s ease, color .45s ease;
+  /* faint parchment mottling */
+  background-image:
+    radial-gradient(ellipse 80% 60% at 20% 0%,   rgb(255 255 255 / .35), transparent 60%),
+    radial-gradient(ellipse 90% 70% at 85% 100%, rgb(0 0 0 / .05),       transparent 55%);
+  background-attachment: fixed;
+}
+[data-theme="dark"] body {
+  background-image:
+    radial-gradient(ellipse 90% 55% at 50% -5%, rgb(86 184 174 / .07), transparent 60%),
+    radial-gradient(ellipse 80% 70% at 90% 105%, rgb(213 169 78 / .05), transparent 55%);
+}
+
+::selection { background: var(--gold); color: #fff; }
+
+img, svg { max-width: 100%; height: auto; }
+
+a { color: var(--teal); text-decoration-color: color-mix(in srgb, var(--teal) 45%, transparent); text-underline-offset: 3px; }
+a:hover { text-decoration-color: var(--teal); }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0 0 .5em;
+  text-wrap: balance;
+}
+
+p { margin: 0 0 1.1em; }
+p:last-child { margin-bottom: 0; }
+
+.arabic {
+  font-family: var(--font-arabic);
+  font-size: 1.2em;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+/* keyboard focus — always visible, never removed */
+:focus-visible {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* footnote markers, rubricated as in medieval manuscripts */
+sup.fn { line-height: 0; font-size: .72em; }
+sup.fn a {
+  color: var(--rubric);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0 .1em;
+}
+sup.fn a:hover { text-decoration: underline; }
+
+/* ---------- 3. Reading progress + theme toggle -------------------------- */
+
+.progress {
+  position: fixed; top: 0; left: 0; height: 3px; width: 0;
+  background: linear-gradient(90deg, var(--teal), var(--gold));
+  z-index: 60;
+}
+
+.theme-toggle {
+  position: fixed; top: .9rem; right: .9rem; z-index: 55;
+  display: inline-flex; align-items: center; gap: .5rem;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg-raised) 82%, transparent);
+  backdrop-filter: blur(6px);
+  color: var(--ink-soft);
+  font: 600 .72rem/1 var(--font-body);
+  letter-spacing: .14em; text-transform: uppercase;
+  padding: .55rem .8rem; border-radius: 999px;
+  cursor: pointer;
+  transition: color .2s, border-color .2s, box-shadow .2s;
+}
+.theme-toggle:hover { color: var(--ink); border-color: var(--gold); box-shadow: var(--shadow); }
+.theme-toggle .moon { display: none; }
+[data-theme="dark"] .theme-toggle .sun  { display: none; }
+[data-theme="dark"] .theme-toggle .moon { display: inline; }
+.theme-toggle svg { width: 15px; height: 15px; fill: var(--gold); }
+
+/* ---------- 4. Layout: sticky table of contents ------------------------- */
+
+.layout { display: block; }
+
+.toc {
+  display: none;
+}
+
+@media (min-width: 1160px) {
+  .layout {
+    display: grid;
+    grid-template-columns: var(--toc-w) minmax(0, 1fr);
+    gap: 0;
+  }
+  .toc {
+    display: block;
+    position: sticky; top: 0; align-self: start;
+    height: 100dvh; overflow-y: auto;
+    padding: 2.2rem 1.4rem 2.2rem 1.8rem;
+    border-right: 1px solid var(--line);
+  }
+}
+
+.toc-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem; font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--gold);
+  margin: 0 0 1rem;
+}
+.toc ol { list-style: none; margin: 0; padding: 0; }
+.toc li + li { margin-top: .1rem; }
+.toc a {
+  display: block;
+  padding: .32rem .6rem;
+  font-size: .84rem; line-height: 1.35;
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  border-radius: 0 4px 4px 0;
+  transition: color .18s, border-color .18s, background-color .18s;
+}
+.toc a:hover { color: var(--ink); background: color-mix(in srgb, var(--gold) 8%, transparent); }
+.toc a.active {
+  color: var(--teal);
+  border-left-color: var(--gold);
+  background: color-mix(in srgb, var(--teal) 7%, transparent);
+  font-weight: 600;
+}
+.toc .toc-note {
+  margin-top: 1.6rem; padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  font-size: .74rem; color: var(--ink-faint); line-height: 1.5;
+}
+
+/* mobile nav: sticky horizontal scroller */
+.mobile-nav {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; gap: .25rem;
+  overflow-x: auto;
+  padding: .55rem .8rem;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+  scrollbar-width: none;
+}
+.mobile-nav::-webkit-scrollbar { display: none; }
+.mobile-nav a {
+  flex: 0 0 auto;
+  font-size: .78rem; font-weight: 600;
+  color: var(--ink-soft); text-decoration: none;
+  padding: .35rem .7rem; border-radius: 999px;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+.mobile-nav a.active {
+  color: var(--teal);
+  border-color: var(--line);
+  background: var(--bg-raised);
+}
+@media (min-width: 1160px) { .mobile-nav { display: none; } }
+
+/* ---------- 5. Sections -------------------------------------------------- */
+
+main { min-width: 0; }
+
+.section {
+  padding: 4.5rem 1.4rem;
+  scroll-margin-top: 3.2rem;
+}
+.section-inner { max-width: var(--content-w); margin: 0 auto; }
+.section--band { background: var(--bg-deep); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+.eyebrow {
+  display: block;
+  font-size: .72rem; font-weight: 700;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: .8rem;
+}
+.section h2 {
+  font-size: clamp(1.9rem, 4.5vw, 2.6rem);
+  margin-bottom: .35em;
+}
+.section .lede {
+  font-size: 1.14rem; color: var(--ink-soft);
+  max-width: 40rem;
+}
+
+/* girih divider — a self-drawing strapwork line between sections */
+.girih-divider {
+  display: block; margin: 0 auto 2.2rem;
+  width: min(340px, 70%);
+  color: var(--gold);
+  opacity: .9;
+}
+.girih-divider path,
+.girih-divider circle {
+  stroke: currentColor; fill: none; stroke-width: 1.4;
+}
+.js .girih-divider path {
+  stroke-dasharray: 1; stroke-dashoffset: 1;
+}
+.js .girih-divider.in-view path {
+  animation: drawGirih 2.4s ease forwards;
+}
+@keyframes drawGirih { to { stroke-dashoffset: 0; } }
+
+/* scroll-reveal (only when JS is on; content is always visible without it) */
+.js .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+.js .reveal.in-view { opacity: 1; transform: none; }
+.js .reveal:nth-child(2) { transition-delay: .08s; }
+.js .reveal:nth-child(3) { transition-delay: .16s; }
+
+/* ---------- 6. Hero ------------------------------------------------------ */
+
+.hero {
+  position: relative;
+  padding: clamp(4rem, 9vw, 7rem) 1.4rem 4.5rem;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+.hero-inner {
+  max-width: 64rem; margin: 0 auto;
+  display: grid; gap: 3rem;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+}
+@media (min-width: 880px) {
+  .hero-inner { grid-template-columns: minmax(0, 1.15fr) minmax(260px, .85fr); }
+}
+
+.hero .bismillah {
+  font-family: var(--font-arabic);
+  font-size: 1.35rem;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+}
+.hero h1 {
+  font-size: clamp(2.6rem, 6.5vw, 4.3rem);
+  font-weight: 700;
+  letter-spacing: -.01em;
+  margin-bottom: .4em;
+}
+.hero h1 em { font-style: italic; color: var(--teal); }
+.hero .subtitle {
+  font-size: 1.18rem; color: var(--ink-soft);
+  max-width: 34rem; margin-bottom: 1.6rem;
+}
+.hero-meta {
+  display: flex; flex-wrap: wrap; gap: .5rem 1.6rem;
+  font-size: .8rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.hero-meta strong { color: var(--gold); font-weight: 700; }
+
+/* the astrolabe — signature element */
+.astrolabe-wrap { display: grid; place-items: center; }
+.astrolabe { width: min(340px, 78vw); filter: drop-shadow(0 14px 30px rgb(46 38 24 / .18)); }
+[data-theme="dark"] .astrolabe { filter: drop-shadow(0 14px 34px rgb(0 0 0 / .5)); }
+.astrolabe .mater { stroke: var(--gold); }
+.astrolabe .ticks { stroke: var(--ink-faint); }
+.astrolabe .rete  { stroke: var(--teal); transform-origin: 200px 210px; }
+.astrolabe .rete .star-pt { fill: var(--gold-bright); stroke: none; }
+.astrolabe .rule  { stroke: var(--rubric); transform-origin: 200px 210px; }
+.js .astrolabe .rete { animation: spin 240s linear infinite; }
+.js .astrolabe .rule { animation: spin 90s linear infinite reverse; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.astrolabe-caption {
+  margin-top: 1rem; text-align: center;
+  font-size: .78rem; color: var(--ink-faint); font-style: italic;
+}
+
+/* ---------- 7. Timeline --------------------------------------------------- */
+
+.timeline { position: relative; margin-top: 2.4rem; padding-left: 1.6rem; }
+.timeline::before {
+  content: ""; position: absolute; left: .45rem; top: .4rem; bottom: .4rem;
+  width: 2px;
+  background: linear-gradient(var(--gold), var(--teal));
+  opacity: .55;
+}
+
+.timeline details { position: relative; margin-bottom: 1rem; }
+.timeline details::before {
+  content: ""; position: absolute; left: -1.6rem; top: .95rem;
+  width: 11px; height: 11px; transform: translateX(.45rem) translateX(-50%) rotate(45deg);
+  background: var(--bg); border: 2px solid var(--gold);
+  transition: background-color .25s;
+}
+.timeline details[open]::before { background: var(--gold); }
+
+.timeline summary {
+  cursor: pointer; list-style: none;
+  padding: .7rem 1rem;
+  border: 1px solid var(--line); border-radius: 8px;
+  background: var(--bg-raised);
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .4rem .9rem;
+  transition: border-color .2s, box-shadow .25s, transform .25s;
+}
+.timeline summary::-webkit-details-marker { display: none; }
+.timeline summary:hover { border-color: var(--gold); box-shadow: var(--shadow); transform: translateY(-1px); }
+.timeline summary .years {
+  font-size: .78rem; font-weight: 700; letter-spacing: .1em;
+  color: var(--rubric); min-width: 6.5rem;
+}
+.timeline summary .t-title { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; }
+.timeline summary .hint {
+  margin-left: auto; font-size: .74rem; color: var(--ink-faint);
+  letter-spacing: .08em; text-transform: uppercase;
+}
+.timeline details[open] summary .hint { visibility: hidden; }
+.timeline .t-body {
+  padding: 1rem 1.1rem 1.2rem;
+  border: 1px solid var(--line); border-top: 0;
+  border-radius: 0 0 8px 8px;
+  background: color-mix(in srgb, var(--bg-raised) 55%, transparent);
+  font-size: .98rem;
+}
+
+/* ---------- 8. Scholar cards ---------------------------------------------- */
+
+.card-grid {
+  display: grid; gap: 1.1rem;
+  grid-template-columns: 1fr;
+  margin-top: 2.2rem;
+}
+@media (min-width: 700px) { .card-grid { grid-template-columns: 1fr 1fr; } }
+.card-grid .span-2 { grid-column: 1 / -1; }
+
+details.card {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg-raised);
+  box-shadow: var(--shadow);
+  transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+  overflow: hidden;
+}
+@media (hover: hover) {
+  details.card:not([open]):hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lift);
+    border-color: var(--gold);
+  }
+}
+details.card[open] { border-color: var(--gold); }
+
+details.card summary {
+  cursor: pointer; list-style: none;
+  padding: 1.15rem 1.25rem 1rem;
+  position: relative;
+}
+details.card summary::-webkit-details-marker { display: none; }
+details.card summary::after {
+  /* rub el hizb ornament as expand marker */
+  content: "✦";
+  position: absolute; top: 1.05rem; right: 1.1rem;
+  color: var(--gold); font-size: .95rem;
+  transition: transform .3s ease;
+}
+details.card[open] summary::after { transform: rotate(45deg); }
+
+.card .who {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .35rem .7rem;
+  padding-right: 1.4rem;
+}
+.card .who h3 { font-size: 1.35rem; margin: 0; }
+.card .latin { font-size: .82rem; font-style: italic; color: var(--ink-faint); }
+.card .dates {
+  display: block; margin-top: .15rem;
+  font-size: .76rem; font-weight: 700; letter-spacing: .12em;
+  color: var(--rubric); text-transform: uppercase;
+}
+.card .teaser {
+  margin: .55rem 0 0; font-size: .93rem; color: var(--ink-soft);
+}
+.card .card-body {
+  padding: 0 1.25rem 1.3rem;
+  border-top: 1px dashed var(--line);
+  margin-top: .2rem; padding-top: 1rem;
+  font-size: .97rem;
+}
+.card .card-body h4 {
+  font-size: .78rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--gold); font-family: var(--font-body); font-weight: 700;
+  margin: 1.1em 0 .4em;
+}
+.card .card-body h4:first-child { margin-top: 0; }
+.card ul { margin: 0 0 1em; padding-left: 1.15rem; }
+.card li { margin-bottom: .35em; }
+
+/* ---------- 9. Astronomy star field --------------------------------------- */
+
+.starfield-band {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 2rem 0 0;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(ellipse at 30% 20%, #16283c 0%, #0b1524 60%, #070e18 100%);
+  color: #e7dcc0;
+  padding: 2rem 1.6rem;
+}
+.starfield-band .stars { position: absolute; inset: 0; pointer-events: none; }
+.starfield-band .stars circle { fill: var(--star); }
+.js .starfield-band .stars circle { animation: twinkle 3.5s ease-in-out infinite; }
+@keyframes twinkle { 0%,100% { opacity: .25; } 50% { opacity: 1; } }
+.starfield-band blockquote {
+  position: relative; margin: 0;
+  font-family: var(--font-display); font-size: 1.3rem; font-style: italic; line-height: 1.5;
+  max-width: 34rem;
+}
+.starfield-band .attribution {
+  position: relative; margin-top: .8rem;
+  font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: #d5a94e;
+}
+
+/* ---------- 10. Legacy word-list & tables ---------------------------------- */
+
+.word-grid {
+  display: grid; gap: .7rem;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  margin-top: 1.6rem;
+}
+.word {
+  border: 1px solid var(--line); border-radius: 8px;
+  background: var(--bg-raised);
+  padding: .75rem .85rem;
+  transition: transform .25s, box-shadow .25s, border-color .25s;
+}
+@media (hover: hover) {
+  .word:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--gold); }
+}
+.word dt { font-family: var(--font-display); font-weight: 700; font-size: 1.08rem; }
+.word dt .arabic { font-size: 1em; margin-left: .3em; }
+.word dd { margin: .25rem 0 0; font-size: .82rem; color: var(--ink-soft); line-height: 1.5; }
+
+/* ---------- 11. Bibliography accordions ------------------------------------ */
+
+.biblio details {
+  border: 1px solid var(--line); border-radius: 8px;
+  background: var(--bg-raised);
+  margin-bottom: .7rem;
+}
+.biblio summary {
+  cursor: pointer; list-style: none;
+  padding: .85rem 1.1rem;
+  font-family: var(--font-display); font-size: 1.12rem; font-weight: 700;
+  display: flex; align-items: center; gap: .6rem;
+}
+.biblio summary::-webkit-details-marker { display: none; }
+.biblio summary::before {
+  content: "❧"; color: var(--gold); font-size: 1rem;
+  transition: transform .3s;
+}
+.biblio details[open] summary::before { transform: rotate(90deg); }
+.biblio .b-body { padding: 0 1.1rem 1rem; font-size: .95rem; }
+.biblio .b-body ul { margin: 0; padding-left: 1.15rem; }
+.biblio .b-body li { margin-bottom: .55em; }
+.biblio .b-note { font-size: .84rem; color: var(--ink-faint); font-style: italic; }
+
+/* ---------- 12. References ------------------------------------------------- */
+
+.refs ol { padding-left: 1.4rem; font-size: .92rem; color: var(--ink-soft); }
+.refs li { margin-bottom: .6em; }
+.refs li:target {
+  background: color-mix(in srgb, var(--gold) 16%, transparent);
+  border-radius: 4px; padding: .2em .4em;
+}
+.backref { font-size: .8em; text-decoration: none; margin-left: .3em; }
+
+/* ---------- 13. Footer ------------------------------------------------------ */
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 2.5rem 1.4rem 3rem;
+  text-align: center;
+  font-size: .85rem; color: var(--ink-faint);
+}
+footer .arabic { display: block; font-size: 1.2rem; margin-bottom: .6rem; }
+
+/* ---------- 14. Motion & print --------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .js .astrolabe .rete, .js .astrolabe .rule,
+  .js .starfield-band .stars circle { animation: none; }
+  .js .girih-divider path { stroke-dasharray: none; stroke-dashoffset: 0; animation: none; }
+  * { transition-duration: .01ms !important; }
+}
+
+@media print {
+  .toc, .mobile-nav, .theme-toggle, .progress { display: none; }
+  details { border: none; }
+  details > *:not(summary) { display: block; }
+}

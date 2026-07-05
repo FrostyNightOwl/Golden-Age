@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The House of Wisdom — Science in the Islamic Golden Age</title>
+<meta name="description" content="A reading companion to the mathematicians, astronomers, physicians, and philosophers of the Islamic Golden Age (8th–15th centuries): al-Khwarizmi, Ibn al-Haytham, Ibn Sina, al-Battani, and the transmission of their science to Europe.">
+
+<!-- Typography: Cormorant Garamond (display), Spectral (body), Amiri (Arabic) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+</head>
+<body>
+
+<div class="progress" aria-hidden="true"></div>
+
+<button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"
+        aria-label="Switch between parchment and night-sky themes">
+  <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0-6 1.6 3.2L12 6l-1.6-1.8L12 1Zm0 22-1.6-3.2L12 18l1.6 1.8L12 23ZM1 12l3.2-1.6L6 12l-1.8 1.6L1 12Zm22 0-3.2 1.6L18 12l1.8-1.6L23 12ZM4.2 4.2 7.5 5.4l.4 2.4-2.4-.4-1.3-3.2Zm15.6 15.6-3.3-1.2-.4-2.4 2.4.4 1.3 3.2Zm0-15.6-1.3 3.2-2.4.4.4-2.4 3.3-1.2ZM4.2 19.8l1.3-3.2 2.4-.4-.4 2.4-3.3 1.2Z"/></svg>
+  <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 14.5A8.5 8.5 0 0 1 9.5 3 8.5 8.5 0 1 0 21 14.5ZM17 4l.7 1.8L19.5 6l-1.8.7L17 8.5l-.7-1.8L14.5 6l1.8-.2L17 4Z"/></svg>
+  <span class="toggle-label">Parchment</span>
+</button>
+
+<!-- Mobile navigation (hidden on wide screens; the sidebar takes over) -->
+<nav class="mobile-nav" aria-label="Sections">
+  <a href="#introduction">Introduction</a>
+  <a href="#timeline">Timeline</a>
+  <a href="#mathematics">Mathematics</a>
+  <a href="#astronomy">Astronomy</a>
+  <a href="#medicine">Medicine</a>
+  <a href="#optics">Optics</a>
+  <a href="#chemistry">Chemistry</a>
+  <a href="#philosophy">Philosophy</a>
+  <a href="#legacy">Legacy</a>
+  <a href="#reading">Further reading</a>
+  <a href="#references">References</a>
+</nav>
+
+<div class="layout">
+
+  <!-- Sticky table of contents (desktop) -->
+  <aside class="toc" aria-label="Table of contents">
+    <p class="toc-title">Fihrist · Contents</p>
+    <ol>
+      <li><a href="#introduction">I · Introduction</a></li>
+      <li><a href="#timeline">II · Timeline</a></li>
+      <li><a href="#mathematics">III · Mathematics</a></li>
+      <li><a href="#astronomy">IV · Astronomy</a></li>
+      <li><a href="#medicine">V · Medicine</a></li>
+      <li><a href="#optics">VI · Physics &amp; Optics</a></li>
+      <li><a href="#chemistry">VII · Chemistry</a></li>
+      <li><a href="#philosophy">VIII · Philosophy of Knowledge</a></li>
+      <li><a href="#legacy">IX · Legacy &amp; Impact</a></li>
+      <li><a href="#reading">X · Further Reading</a></li>
+      <li><a href="#references">XI · References</a></li>
+    </ol>
+    <p class="toc-note">A <em>fihrist</em> is a catalogue or index — the word survives from Ibn al-Nadim's great 10th-century inventory of Arabic books.</p>
+  </aside>
+
+  <main>
+
+    <!-- ================================================================ -->
+    <!-- HERO                                                             -->
+    <!-- ================================================================ -->
+    <header class="hero">
+      <div class="hero-inner">
+        <div>
+          <p class="bismillah" lang="ar" dir="rtl">اِقْرَأْ</p>
+          <h1>The House of <em>Wisdom</em></h1>
+          <p class="subtitle">
+            A reading companion to the scientists of the Islamic Golden Age —
+            the scholars who, between the 8th and 15th centuries, took the
+            inheritance of Greece, Persia, and India and built from it algebra,
+            experimental optics, clinical medicine, and observatory astronomy.
+          </p>
+          <div class="hero-meta">
+            <span><strong>8th–15th</strong> centuries</span>
+            <span><strong>Baghdad · Cairo · Córdoba · Samarkand</strong></span>
+            <span><strong>Iqraʾ</strong> — “Read,” the first revealed word (Q 96:1)</span>
+          </div>
+        </div>
+
+        <!-- Signature element: a slowly turning astrolabe.                -->
+        <!-- The rete (star map) rotates once per four minutes; the rule   -->
+        <!-- counter-rotates. Purely decorative; hidden from readers.      -->
+        <div class="astrolabe-wrap">
+          <svg class="astrolabe" viewBox="0 0 400 470" role="img"
+               aria-label="Stylised drawing of an astrolabe with a slowly rotating star map">
+            <!-- throne (kursi) and suspension ring -->
+            <g class="mater" fill="none" stroke-width="2">
+              <circle cx="200" cy="26" r="14"/>
+              <path d="M178 60 Q200 30 222 60 L214 74 L186 74 Z"/>
+            </g>
+            <!-- mater: the body of the instrument -->
+            <g class="mater" fill="none" stroke-width="2.5">
+              <circle cx="200" cy="240" r="168"/>
+              <circle cx="200" cy="240" r="156" stroke-width="1.2"/>
+            </g>
+            <!-- degree scale: dashed ring reads as tick marks -->
+            <circle class="ticks" cx="200" cy="240" r="162" fill="none"
+                    stroke-width="10" stroke-dasharray="1.5 8.4" opacity=".55"/>
+            <!-- fixed tropics / equator circles of the plate -->
+            <g class="mater" fill="none" stroke-width="1" opacity=".55">
+              <circle cx="200" cy="240" r="118"/>
+              <circle cx="200" cy="240" r="72"/>
+              <line x1="52" y1="240" x2="348" y2="240"/>
+              <line x1="200" y1="92" x2="200" y2="388"/>
+            </g>
+            <!-- rete: the rotating star map -->
+            <g class="rete" fill="none" stroke-width="1.8">
+              <circle cx="200" cy="212" r="96"/>              <!-- ecliptic, off-centre -->
+              <circle cx="200" cy="240" r="140" opacity=".7"/>
+              <path d="M200 100 q14 26 0 52"/>                 <!-- star pointers -->
+              <path d="M300 200 q-26 14 -52 0"/>
+              <path d="M118 300 q22 -18 44 -6"/>
+              <path d="M254 330 q-8 -26 12 -44"/>
+              <path d="M130 160 q24 8 30 32"/>
+              <circle class="star-pt" cx="200" cy="152" r="4"/>
+              <circle class="star-pt" cx="248" cy="200" r="4"/>
+              <circle class="star-pt" cx="162" cy="294" r="4"/>
+              <circle class="star-pt" cx="266" cy="286" r="4"/>
+              <circle class="star-pt" cx="160" cy="192" r="4"/>
+            </g>
+            <!-- rule (alidade), counter-rotating -->
+            <g class="rule" stroke-width="2.5">
+              <line x1="70" y1="240" x2="330" y2="240"/>
+              <circle cx="200" cy="240" r="7" fill="none"/>
+            </g>
+          </svg>
+          <p class="astrolabe-caption">
+            The astrolabe: “a mathematical jewel” — computer, star map, and
+            timepiece of the medieval world.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================================================================ -->
+    <!-- I · INTRODUCTION                                                 -->
+    <!-- ================================================================ -->
+    <section class="section" id="introduction" aria-labelledby="h-intro">
+      <div class="section-inner">
+        <svg class="girih-divider" viewBox="0 0 340 44" aria-hidden="true">
+          <path d="M0 22 H100 L118 4 L136 22 L118 40 Z M136 22 H150 L170 2 L190 22 L170 42 Z M190 22 H204 L222 4 L240 22 L222 40 Z M240 22 H340"/>
+          <circle cx="170" cy="22" r="5"/>
+        </svg>
+        <span class="eyebrow">I · Introduction</span>
+        <h2 id="h-intro">A civilisation that read</h2>
+        <p class="lede">
+          For roughly seven centuries, the language of science was Arabic —
+          written by Muslims, Christians, Jews, and Sabians, from Córdoba to
+          Samarkand, under the patronage of caliphs, viziers, and sultans.
+        </p>
+
+        <div class="reveal">
+          <p>
+            The story usually begins in Baghdad. Founded in 762 by the Abbasid
+            caliph al-Mansur as a planned round city, it became within two
+            generations the largest city in the world outside China — and the
+            centre of the most ambitious knowledge-transfer project antiquity’s
+            heirs ever attempted. From roughly the mid-8th to the 10th century,
+            nearly the entire surviving corpus of Greek secular learning —
+            Aristotle, Euclid, Ptolemy, Galen, Archimedes — was translated into
+            Arabic, alongside Persian administrative and astronomical works and
+            Indian mathematical texts. The historian Dimitri Gutas has shown
+            that this was no marginal scribal hobby: it was a society-wide
+            enterprise, sustained for over two centuries by the Abbasid elite,
+            with translators commanding enormous salaries.<sup class="fn"><a href="#ref-1">1</a></sup>
+          </p>
+          <p>
+            The emblem of the movement is the <strong>Bayt al-Ḥikma</strong>
+            <span class="arabic" lang="ar" dir="rtl">بيت الحكمة</span> — the
+            “House of Wisdom” — a palace library and academy that flourished
+            under the caliph al-Maʾmūn (r. 813–833). Al-Maʾmūn did not merely
+            collect books; he commissioned new science. His astronomers
+            re-measured the obliquity of the ecliptic, compiled the “Verified
+            Tables” (<em>al-Zīj al-Mumtaḥan</em>), and famously measured the
+            length of a degree of latitude on the plain of Sinjar to estimate
+            the circumference of the Earth.<sup class="fn"><a href="#ref-1">1</a>, <a href="#ref-17">17</a></sup>
+            The greatest of the translators, the Nestorian Christian physician
+            <strong>Ḥunayn ibn Isḥāq</strong> (808–873), rendered virtually the
+            whole of Galen into Syriac and Arabic with a philologist’s rigour —
+            collating manuscripts, comparing readings — that anticipates modern
+            critical editing.<sup class="fn"><a href="#ref-1">1</a>, <a href="#ref-10">10</a></sup>
+          </p>
+          <p>
+            Two material facts made all of this scale. First, <strong>paper</strong>:
+            the craft reached the Islamic world through Central Asia after the
+            battle of Talas (751), and paper mills in Baghdad made books cheap
+            enough for a genuine book trade — Ibn al-Nadīm’s
+            <em>Fihrist</em> (987), a bookseller’s catalogue, lists thousands
+            of titles. Second, a single scientific <strong>lingua franca</strong>:
+            a student in Córdoba and an astronomer in Samarkand read and wrote
+            the same Arabic, so results travelled.<sup class="fn"><a href="#ref-2">2</a>, <a href="#ref-17">17</a></sup>
+          </p>
+          <p>
+            Why does the era matter? Not because “the Arabs preserved Greek
+            science for Europe” — a formula historians of science now regard as
+            both condescending and false. As George Saliba and others have
+            documented, scholars writing in Arabic <em>transformed</em> what
+            they received: they invented algebra as a discipline, founded
+            experimental optics, described pulmonary circulation, built the
+            first research observatories, and developed planetary models later
+            found, virtually line for line, in Copernicus.<sup class="fn"><a href="#ref-2">2</a>, <a href="#ref-9">9</a></sup>
+            This page is a guided shelf: each section gives the context, the
+            key figures, and the sources to read next.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- II · TIMELINE                                                    -->
+    <!-- ================================================================ -->
+    <section class="section section--band" id="timeline" aria-labelledby="h-timeline">
+      <div class="section-inner">
+        <span class="eyebrow">II · Timeline</span>
+        <h2 id="h-timeline">Seven centuries in five movements</h2>
+        <p class="lede">Select any era to expand it. Dates are CE.</p>
+
+        <div class="timeline reveal">
+
+          <details>
+            <summary>
+              <span class="years">750 – 809</span>
+              <span class="t-title">The Abbasid dawn</span>
+              <span class="hint">expand ✦</span>
+            </summary>
+            <div class="t-body">
+              <p>
+                The Abbasid revolution (750) shifts the caliphate’s centre of
+                gravity east, toward Persia’s courtly and scholarly traditions.
+                Baghdad is founded in 762; within decades Indian astronomical
+                texts (the <em>Sindhind</em> tradition, carrying Hindu numerals
+                and sine tables) are translated at the caliph al-Mansur’s
+                request. Papermaking arrives via Central Asia after the battle
+                of Talas (751). The corpus attributed to the alchemist
+                <strong>Jābir ibn Ḥayyān</strong> begins to take shape. Under
+                Hārūn al-Rashīd (r. 786–809), the palace library that would
+                become the House of Wisdom is already collecting Greek and
+                Persian manuscripts.<sup class="fn"><a href="#ref-1">1</a>, <a href="#ref-17">17</a></sup>
+              </p>
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              <span class="years">813 – 873</span>
+              <span class="t-title">Al-Maʾmūn and the translation movement’s peak</span>
+              <span class="hint">expand ✦</span>
+            </summary>
+            <div class="t-body">
+              <p>
+                Al-Maʾmūn (r. 813–833) turns patronage into policy: embassies
+                seek Greek manuscripts, observatories operate at Shammāsiyya
+                (Baghdad) and Mount Qāsiyūn (Damascus) around 828–832, and a
+                degree of latitude is measured to gauge the Earth. In this
+                single lifetime work: <strong>al-Khwārizmī</strong> (algebra,
+                the Hindu numerals), <strong>al-Kindī</strong> (“Philosopher of
+                the Arabs”), the <strong>Banū Mūsā</strong> brothers
+                (geometry, mechanics), and <strong>Ḥunayn ibn Isḥāq</strong>
+                (the Galenic corpus). <strong>Thābit ibn Qurra</strong>
+                (836–901), a Sabian from Harran, arrives soon after — number
+                theory, statics, and revisions of Euclid and Ptolemy.<sup class="fn"><a href="#ref-1">1</a>, <a href="#ref-4">4</a></sup>
+              </p>
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              <span class="years">900 – 1050</span>
+              <span class="t-title">The age of the giants</span>
+              <span class="hint">expand ✦</span>
+            </summary>
+            <div class="t-body">
+              <p>
+                Political fragmentation multiplies courts — and therefore
+                patrons. <strong>Al-Battānī</strong> refines solar theory at
+                Raqqa; <strong>al-Rāzī</strong> directs hospitals in Rayy and
+                Baghdad; <strong>al-Uqlīdisī</strong> (Damascus, 952) writes the
+                earliest surviving treatment of decimal fractions;
+                <strong>Abū al-Wafāʾ</strong> advances spherical trigonometry
+                in Buyid Baghdad. Around the year 1000, three careers overlap
+                that would each anchor a century: <strong>Ibn Sīnā</strong> in
+                Persia, <strong>Ibn al-Haytham</strong> in Cairo, and
+                <strong>al-Bīrūnī</strong> in Ghazna — the last measuring the
+                Earth’s radius from a mountaintop in Punjab to within about 1%
+                of the modern value. Córdoba’s caliphal library and Cairo’s
+                Dār al-ʿIlm (1004) rival Baghdad.<sup class="fn"><a href="#ref-4">4</a>, <a href="#ref-5">5</a>, <a href="#ref-17">17</a></sup>
+              </p>
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              <span class="years">1050 – 1250</span>
+              <span class="t-title">Consolidation, critique, and transmission</span>
+              <span class="hint">expand ✦</span>
+            </summary>
+            <div class="t-body">
+              <p>
+                The madrasa spreads as an institution of learning.
+                <strong>ʿUmar al-Khayyām</strong> classifies cubic equations and
+                leads the Jalālī calendar reform (1079) — more accurate than the
+                Gregorian calendar that followed five centuries later.
+                <strong>Al-Ghazālī’s</strong> <em>Incoherence of the
+                Philosophers</em> (c. 1095) and <strong>Ibn Rushd’s</strong>
+                reply frame Islam’s great debate on reason and causation.
+                <strong>Al-Jazarī</strong> (d. 1206) documents crankshafts,
+                camshafts, and programmable automata. Meanwhile in Toledo,
+                <strong>Gerard of Cremona</strong> (d. 1187) translates over
+                seventy Arabic works into Latin — the Almagest, Avicenna’s
+                Canon, al-Khwārizmī’s algebra — feeding the new European
+                universities.<sup class="fn"><a href="#ref-14">14</a>, <a href="#ref-15">15</a></sup>
+              </p>
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              <span class="years">1258 – 1450</span>
+              <span class="t-title">After Baghdad: Maragheh, Damascus, Samarkand</span>
+              <span class="hint">expand ✦</span>
+            </summary>
+            <div class="t-body">
+              <p>
+                The Mongol sack of Baghdad (1258) ends the Abbasid caliphate —
+                yet the following two centuries produce some of the era’s most
+                sophisticated science, a fact that by itself refutes the old
+                “decline after al-Ghazālī” narrative.<sup class="fn"><a href="#ref-2">2</a></sup>
+                Hülegü founds the <strong>Maragheh observatory</strong> (1259)
+                under <strong>Naṣīr al-Dīn al-Ṭūsī</strong>, whose “Ṭūsī
+                couple” resolves a flaw in Ptolemy’s models.
+                <strong>Ibn al-Nafīs</strong> describes pulmonary circulation in
+                Cairo (c. 1242). <strong>Ibn al-Shāṭir</strong> perfects
+                non-Ptolemaic planetary models in Damascus (d. 1375). At
+                Samarkand, <strong>Ulugh Beg’s</strong> observatory (c. 1420)
+                and <strong>al-Kāshī’s</strong> computational genius produce the
+                finest star catalogue and trigonometric tables before Tycho
+                Brahe.<sup class="fn"><a href="#ref-7">7</a>, <a href="#ref-8">8</a>, <a href="#ref-9">9</a></sup>
+              </p>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- III · MATHEMATICS                                                -->
+    <!-- ================================================================ -->
+    <section class="section" id="mathematics" aria-labelledby="h-math">
+      <div class="section-inner">
+        <svg class="girih-divider" viewBox="0 0 340 44" aria-hidden="true">
+          <path d="M0 22 H100 L118 4 L136 22 L118 40 Z M136 22 H150 L170 2 L190 22 L170 42 Z M190 22 H204 L222 4 L240 22 L222 40 Z M240 22 H340"/>
+          <circle cx="170" cy="22" r="5"/>
+        </svg>
+        <span class="eyebrow">III · Mathematics</span>
+        <h2 id="h-math">Al-jabr: the science of restoring</h2>
+        <p class="lede">
+          Two of the most common words in modern mathematics — <em>algebra</em>
+          and <em>algorithm</em> — are, respectively, an Arabic noun and a
+          Latinised Arabic surname.
+        </p>
+
+        <div class="reveal">
+          <p>
+            Mathematicians writing in Arabic fused three inheritances: Greek
+            geometry and proof, Indian numerals and computation, and
+            Babylonian-Persian practical arithmetic. Out of that fusion came
+            genuinely new departments of mathematics. Algebra became a
+            discipline with its own name and methods. Trigonometry was
+            systematised as a subject independent of astronomy — all six modern
+            trigonometric functions were defined and tabulated by Arabic
+            authors, with <strong>Abū al-Wafāʾ</strong> (940–998) proving the
+            angle-addition identities on the sphere.<sup class="fn"><a href="#ref-4">4</a></sup>
+            Decimal fractions appear in <strong>al-Uqlīdisī’s</strong> Damascus
+            arithmetic of 952; <strong>Thābit ibn Qurra</strong> gave a rule
+            generating amicable numbers; and combinatorics, number theory, and
+            geometric constructions all advanced.<sup class="fn"><a href="#ref-4">4</a>, <a href="#ref-5">5</a></sup>
+          </p>
+        </div>
+
+        <div class="card-grid">
+
+          <details class="card span-2">
+            <summary>
+              <span class="who">
+                <h3>Muḥammad ibn Mūsā al-Khwārizmī</h3>
+                <span class="latin">Latin: Algoritmi</span>
+              </span>
+              <span class="dates">c. 780 – c. 850 · Baghdad</span>
+              <p class="teaser">
+                The astronomer of the House of Wisdom whose two short books
+                named both <em>algebra</em> and the <em>algorithm</em>.
+              </p>
+            </summary>
+            <div class="card-body">
+              <h4>Life</h4>
+              <p>
+                Of Khwarazmian (Central Asian) origin, al-Khwārizmī worked in
+                Baghdad under the caliph al-Maʾmūn as an astronomer and head of
+                the House of Wisdom’s library. He produced a zīj (astronomical
+                handbook), a world geography correcting Ptolemy, and the two
+                mathematical works that made his name immortal.<sup class="fn"><a href="#ref-4">4</a>, <a href="#ref-18">18</a></sup>
+              </p>
+              <h4>Contributions</h4>
+              <ul>
+                <li>
+                  <em>Al-Kitāb al-mukhtaṣar fī ḥisāb al-jabr wa-l-muqābala</em>
+                  (“The Compendious Book on Calculation by Restoration and
+                  Balancing,” c. 820) gives the first systematic treatment of
+                  solving linear and quadratic equations — classified into
+                  standard types, solved by general procedures, and justified
+                  with geometric proofs. The operation <em>al-jabr</em>
+                  (“restoring” a subtracted quantity to the other side) gave
+                  algebra its name.<sup class="fn"><a href="#ref-4">4</a></sup>
+                </li>
+                <li>
+                  His treatise on reckoning with Hindu numerals — surviving
+                  only in Latin as <em>Dixit Algorizmi</em> (“Thus spoke
+                  al-Khwārizmī”) — introduced decimal place-value arithmetic,
+                  including zero, to the Arabic world and thence to Europe.
+                  Medieval Latin writers called any decimal procedure an
+                  <em>algorismus</em>: our “algorithm.”<sup class="fn"><a href="#ref-4">4</a>, <a href="#ref-3">3</a></sup>
+                </li>
+              </ul>
+              <h4>Why it mattered</h4>
+              <p>
+                Al-Khwārizmī deliberately wrote for practical users — merchants,
+                surveyors, judges dividing inheritances — and in doing so
+                abstracted equation-solving away from any particular problem.
+                That abstraction, the idea of the equation as an object in its
+                own right, is the founding move of algebra. Translated by
+                Robert of Chester (1145) and Gerard of Cremona, the
+                <em>Algebra</em> was the seed text of European mathematics for
+                four centuries.<sup class="fn"><a href="#ref-4">4</a>, <a href="#ref-15">15</a></sup>
+              </p>
+            </div>
+          </details>
+
+          <details class="card">
+            <summary>
+              <span class="who">
+                <h3>ʿUmar al-Khayyām</h3>
+                <span class="latin">Omar Khayyam</span>
+              </span>
+              <span class="dates">1048 – 1131 · Nishapur, Isfahan</span>
+              <p class="teaser">
+                Poet of the <em>Rubāʿiyāt</em> — and the mathematician who
+                classified and solved cubic equations with conic sections.
+              </p>
+            </summary>
+            <div class="card-body">
+              <h4>Contributions</h4>
+              <ul>
+                <li>
+                  His <em>Treatise on Demonstration of Problems of Algebra</em>
+                  (c. 1070) gives the first complete classification of cubic
+                  equations (fourteen types) and solves each geometrically as
+                  the intersection of two conic sections — the deepest work on
+                  cubics before the Italian algebraists of the 1500s.<sup class="fn"><a href="#ref-4">4</a></sup>
+                </li>
+                <li>
+                  Led the astronomers of Malik-Shāh’s Isfahan observatory in
+                  the <strong>Jalālī calendar reform</strong> (1079), whose
+                  intercalation scheme yields a year accurate to about one day
+                  in 5,000 years — better than the Gregorian calendar.<sup class="fn"><a href="#ref-5">5</a>, <a href="#ref-17">17</a></sup>
+                </li>
+                <li>
+                  In his commentary on Euclid he analysed the parallel
+                  postulate through what is now called the Khayyām–Saccheri
+                  quadrilateral, a step on the long road to non-Euclidean
+                  geometry.<sup class="fn"><a href="#ref-4">4</a></sup>
+                </li>
+              </ul>
+              <h4>Why it mattered</h4>
+              <p>
+                Khayyām explicitly recognised that cubics might need means
+                beyond ruler and compass — a clear-eyed statement of the limits
+                of classical construction, and an early instance of
+                mathematics reflecting on its own methods.
+              </p>
+            </div>
+          </details>
+
+          <details class="card">
+            <summary>
+              <span class="who">
+                <h3>Ghiyāth al-Dīn al-Kāshī</h3>
+                <span class="latin">al-Kashi</span>
+              </span>
+              <span class="dates">c. 1380 – 1429 · Kashan, Samarkand</span>
+              <p class="teaser">
+                The computational virtuoso of Ulugh Beg’s Samarkand — π to
+                sixteen decimal places, by hand, in 1424.
+              </p>
+            </summary>
+            <div class="card-body">
+              <h4>Contributions</h4>
+              <ul>
+                <li>
+                  In the <em>Treatise on the Circumference</em> (1424) he
+                  computed 2π to nine sexagesimal places — sixteen decimal
+                  digits — using polygons of over 800 million sides, with a
+                  careful error analysis. The record stood for nearly two
+                  centuries.<sup class="fn"><a href="#ref-4">4</a>, <a href="#ref-5">5</a></sup>
+                </li>
+                <li>
+                  His <em>Miftāḥ al-Ḥisāb</em> (“Key to Arithmetic,” 1427) is a
+                  comprehensive manual of decimal fractions and computation for
+                  astronomers, architects, and merchants.
+                </li>
+                <li>
+                  Devised a rapidly converging fixed-point iteration to compute
+                  sin 1° to extraordinary precision — an algorithm in the fully
+                  modern sense.<sup class="fn"><a href="#ref-4">4</a></sup>
+                </li>
+              </ul>
+              <h4>Why it mattered</h4>
+              <p>
+                Al-Kāshī shows the tradition at full maturity: not preserving
+                old results but pushing numerical method, error control, and
+                systematic computation to limits Europe would not match until
+                Viète and Ludolph van Ceulen.
+              </p>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- IV · ASTRONOMY                                                   -->
+    <!-- ================================================================ -->
+    <section class="section section--band" id="astronomy" aria-labelledby="h-astro">
+      <div class="section-inner">
+        <span class="eyebrow">IV · Astronomy</span>
+        <h2 id="h-astro">Reading the sky, correcting Ptolemy</h2>
+        <p class="lede">
+          Islamic ritual gave astronomy daily work — prayer times, the qibla,
+          the lunar calendar — but the science soon outgrew its chores and
+          began interrogating Ptolemy himself.
+        </p>
+
+        <div class="reveal">
+          <p>
+            The characteristic product was the <strong>zīj</strong>: a handbook
+            of astronomical tables with instructions, of which more than two
+            hundred were composed — a continuous, self-correcting observational
+            tradition unmatched anywhere before early-modern Europe.<sup class="fn"><a href="#ref-6">6</a></sup>
+            Its characteristic institution was the <strong>observatory</strong>
+            as a funded research organisation with large instruments, staff,
+            and a scientific director — an Islamic invention, culminating at
+            Maragheh and Samarkand.<sup class="fn"><a href="#ref-2">2</a>, <a href="#ref-7">7</a></sup>
+            And its characteristic instrument was the <strong>astrolabe</strong>,
+            the analogue computer of the age, on which David King’s studies
+            remain the standard reference.<sup class="fn"><a href="#ref-7">7</a></sup>
+          </p>
+        </div>
+
+        <!-- Twinkling star band with a Qur'anic epigraph -->
+        <div class="starfield-band reveal">
+          <svg class="stars" viewBox="0 0 600 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <circle cx="30"  cy="30"  r="1.6"/><circle cx="90"  cy="110" r="1.2"/>
+            <circle cx="150" cy="50"  r="2"/>  <circle cx="210" cy="130" r="1.4"/>
+            <circle cx="260" cy="20"  r="1.2"/><circle cx="320" cy="90"  r="1.8"/>
+            <circle cx="380" cy="40"  r="1.3"/><circle cx="430" cy="120" r="2"/>
+            <circle cx="480" cy="60"  r="1.2"/><circle cx="530" cy="25"  r="1.7"/>
+            <circle cx="570" cy="100" r="1.3"/><circle cx="110" cy="15"  r="1.1"/>
+            <circle cx="350" cy="145" r="1.5"/><circle cx="500" cy="140" r="1.2"/>
+            <circle cx="55"  cy="80"  r="1.1"/><circle cx="240" cy="70"  r="1.3"/>
+          </svg>
+          <blockquote>
+            “It is He who made the sun a radiance and the moon a light, and
+            ordained for it phases, that you might know the number of years
+            and the reckoning of time.”
+          </blockquote>
+          <p class="attribution">Qurʾan 10:5 — a verse the zīj tradition took as a mandate</p>
+        </div>
+
+        <div class="card-grid">
+
+          <details class="card">
+            <summary>
+              <span class="who">
+                <h3>Al-Battānī</h3>
+                <span class="latin">Latin: Albategnius</span>
+              </span>
+              <span class="dates">c. 858 – 929 · Raqqa</span>
+              <p class="teaser">
+                The observer Copernicus cited by name — measurer of the solar
+                year to within about two minutes.
+              </p>
+            </summary>
+            <div class="card-body">
+              <h4>Contributions</h4>
+              <ul>
+                <li>
+                  Nearly forty years of observations at Raqqa yielded the
+                  <em>al-Zīj al-Ṣābiʾ</em>: a solar year of 365 days, 5 hours,
+                  46 minutes, 24 seconds (about 2½ minutes short of the modern
+                  value), an improved rate of precession, and the discovery
+                  that the solar apogee moves — i.e., Ptolemy’s solar model was
+                  not fixed for all time.<sup class="fn"><a href="#ref-6">6</a>, <a href="#ref-18">18</a></sup>
+                </li>
+                <li>
+                  Replaced Greek chords with sines and tangents in his
+                  computations, helping to establish trigonometry’s modern
+                  functions.<sup class="fn"><a href="#ref-4">4</a></sup>
+                </li>
+              </ul>
+              <h4>Why it mattered</h4>
+              <p>
+                Translated into Latin in the 12th century, his zīj became a
+                staple of European astronomy; Copernicus cites “Albategnius”
+                repeatedly in <em>De revolutionibus</em>. He demonstrated that
+                sustained, precise observation could overturn received
+                parameters — the empirical temper at its best.<sup class="fn"><a href="#ref-19">19</a></sup>
+              </p>
+            </div>
+          </details>
+
+          <details class="card">
+            <summary>
+              <span class="who">
+                <h3>Ibn al-Shāṭir</h3>
+              </span>
+              <span class="dates">1304 – 1375 · Damascus</span>
+              <p class="teaser">
+                The mosque timekeeper whose planetary models reappear,
+                mathematically identical, in Copernicus.
+              </p>
+            </summary>
+            <div class="card-body">
+              <h4>Contributions</h4>
+              <ul>
+                <li>
+                  As chief <em>muwaqqit</em> (timekeeper) of the Umayyad Mosque,
+                  he constructed a magnificent sundial and wrote on
+                  instruments — practical astronomy of the highest order.<sup class="fn"><a href="#ref-7">7</a></sup>
+                </li>
+                <li>
+                  In <em>The Final Quest Concerning the Rectification of
+                  Principles</em> he rebuilt Ptolemy’s planetary models using
+                  only uniform circular motions, eliminating the equant and the
+                  eccentric — the culmination of the “Maragheh school” program
+                  begun with al-Ṭūsī’s couple.<sup class="fn"><a href="#ref-8">8</a>, <a href="#ref-9">9</a></sup>
+                </li>
+              </ul>
+              <h4>Why it mattered</h4>
+              <p>
+                In 1957, E. S. Kennedy and Victor Roberts showed that Ibn
+                al-Shāṭir’s lunar model is mathematically identical to the one
+                Copernicus published in 1543, and his Mercury model likewise
+                corresponds.<sup class="fn"><a href="#ref-9">9</a>, <a href="#ref-19">19</a></sup>
+                Whether Copernicus saw these results through Byzantine
+                intermediaries or rediscovered them is still debated — but the
+                geometry itself was worked out in 14th-century Damascus, in a
+                geocentric framework, for reasons of physical and mathematical
+                consistency.<sup class="fn"><a href="#ref-2">2</a></sup>
+              </p>
+            </div>
+          </details>
+
+          <details class="card span-2">
+            <summary>
+              <span class="who">
+                <h3>The great observatories: Maragheh &amp; Samarkand</h3>
+              </span>
+              <span class="dates">1259 · 1420 — the research institute is born</span>
+              <p class="teaser">
+                State-funded campuses with giant instruments, libraries, staff
+                astronomers — and results that outlived their patrons.
+              </p>
+            </summary>
+            <div class="card-body">
+              <h4>Maragheh (founded 1259, Azerbaijan, Iran)</h4>
+              <p>
+                Endowed by the Mongol ruler Hülegü and directed by
+                <strong>Naṣīr al-Dīn al-Ṭūsī</strong> (1201–1274), Maragheh
+                housed a library, a workshop for instruments, and an
+                international staff. Its scientific signature is the
+                <strong>Ṭūsī couple</strong> — two circles rolling one inside
+                the other to generate straight-line motion from pure rotations —
+                published in al-Ṭūsī’s <em>Tadhkira</em> to repair Ptolemy’s
+                violation of uniform circular motion. The same device later
+                appears in <em>De revolutionibus</em>.<sup class="fn"><a href="#ref-8">8</a>, <a href="#ref-19">19</a></sup>
+                The observatory’s collaborative model — and its zīj, the
+                <em>Zīj-i Īlkhānī</em> — set the pattern for every successor.
+              </p>
+              <h4>Samarkand (founded c. 1420, Uzbekistan)</h4>
+              <p>
+                Built by the Timurid prince — and serious mathematician —
+                <strong>Ulugh Beg</strong> (1394–1449), with a meridian sextant
+                of roughly 40-metre radius sunk into a hillside. Its
+                <em>Zīj-i Sulṭānī</em> (c. 1437) contains a catalogue of about
+                1,018 stars measured afresh — essentially the first
+                comprehensive new star catalogue since Ptolemy — plus sine
+                tables accurate to many sexagesimal places, computed under
+                al-Kāshī and Qāḍī-zāde al-Rūmī.<sup class="fn"><a href="#ref-6">6</a>, <a href="#ref-7">7</a></sup>
+              </p>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- V · MEDICINE                                                     -->
+    <!-- ================================================================ -->
+    <section class="section" id="medicine" aria-labelledby="h-med">
+      <div class="section-inner">
+        <svg class="girih-divider" viewBox="0 0 340 44" aria-hidden="true">
+          <path d="M0 22 H100 L118 4 L136 22 L118 40 Z M136 22 H150 L170 2 L190 22 L170 42 Z M190 22 H204 L222 4 L240 22 L222 40 Z M240 22 H340"/>
+          <circle cx="170" cy="22" r="5"/>
+        </svg>
+        <span class="eyebrow">V · Medicine</span>
+        <h2 id="h-med">The Canon and the bimaristan</h2>
+        <p class="lede">
+          Medicine was where Islamic science touched the most lives — and where
+          its books ruled European curricula the longest.
+        </p>
+
+        <div class="reveal">
+          <p>
+            The institutional achievement was the <strong>bimaristan</strong>,
+            the hospital as a charitable, teaching, and research institution.
+            Ahmad ibn Ṭūlūn’s hospital in Cairo (872) offered free care with
+            separate wards; Baghdad’s ʿAḍudī hospital (981) reportedly opened
+            with two dozen physicians on staff, including specialists. Funded
+            by perpetual religious endowments (<em>waqf</em>), bimaristans
+            treated patients regardless of faith or means, kept teaching
+            rounds, and in some cases wards for the mentally ill — an ethic of
+            institutional care that Pormann and Savage-Smith’s standard survey
+            documents in detail.<sup class="fn"><a href="#ref-10">10</a></sup>
+            In al-Andalus, <strong>al-Zahrāwī</strong> (Latin
+            <em>Abulcasis</em>, 936–1013) devoted a volume of his medical
+            encyclopaedia <em>al-Taṣrīf</em> to surgery, illustrating some two
+            hundred instruments; it served as Europe’s surgical manual into the
+            Renaissance.<sup class="fn"><a href="#ref-10">10</a>, <a href="#ref-18">18</a></sup>
+          </p>
+        </div>
+
+        <div class="card-grid">
+
+          <details class="card">
+            <summary>
+              <span class="who">
+                <h3>Abū Bakr al-Rāzī</h3>
+                <span class="latin">Latin: Rhazes</span>
+              </span>
+              <span class="dates">c. 854 – 925 · Rayy, Baghdad</span>
+              <p class="teaser">
+                The clinician’s clinician: first to tell smallpox from measles,
+                and a fearless critic — even of Galen.
+              </p>
+            </summary>
+            <div class="card-body">
+              <h4>Contributions</h4>
+              <ul>
+                <li>
+                  His treatise <em>On Smallpox and Measles</em> gives the first
+                  clear clinical differentiation of the two diseases, based on
+                  bedside observation; it was reprinted in Europe dozens of
+                  times into the 19th century.<sup class="fn"><a href="#ref-10">10</a></sup>
+                </li>
+                <li>
+                  The posthumous <em>Kitāb al-Ḥāwī</em> (Latin
+                  <em>Liber Continens</em>), assembled from his working files,
+                  records symptoms, treatments, and case notes with unusual
+                  candour about failures — an early culture of the case report.<sup class="fn"><a href="#ref-10">10</a>, <a href="#ref-18">18</a></sup>
+                </li>
+                <li>
+                  Wrote <em>Doubts about Galen</em>, testing inherited doctrine
+                  against observation — and, as a chemist, brought laboratory
+                  method to pharmacy.
+                </li>
+              </ul>
+              <h4>Why it mattered</h4>
+              <p>
+                Al-Rāzī directed hospitals in Rayy and Baghdad and put
+                experience above authority in print. Alongside Ibn Sīnā’s
+                Canon, the <em>Continens</em> was among the most consulted
+                medical books of medieval Europe.<sup class="fn"><a href="#ref-10">10</a>, <a href="#ref-11">11</a></sup>
+              </p>
+            </div>
+          </details>
+
+          <details class="card">
+            <summary>
+              <span class="who">
+                <h3>Ibn Sīnā</h3>
+                <span class="latin">Latin: Avicenna</span>
+              </span>
+              <span class="dates">980 – 1037 · Bukhara, Hamadan</span>
+              <p class="teaser">
+                Philosopher-physician whose <em>Canon of Medicine</em> was a
+                university textbook — in Europe — for six hundred years.
+              </p>
+            </summary>
+            <div class="card-body">
+              <h4>Contributions</h4>
+              <ul>
+                <li>
+                  <em>Al-Qānūn fī al-Ṭibb</em> (completed 1025) organises the
+                  whole of Greco-Arabic medicine into a single systematic
+                  structure: principles, materia medica (about 760 drugs),
+                  diseases head-to-toe, and pharmacology — with attention to
+                  contagion, quarantine, and clinical testing of remedies.<sup class="fn"><a href="#ref-10">10</a>, <a href="#ref-11">11</a></sup>
+                </li>
+                <li>
+                  His philosophical summa, <em>Kitāb al-Shifāʾ</em> (“The Book
+                  of Healing”), spans logic, natural science, mathematics, and
+                  metaphysics; Latin scholastics knew him simply as the great
+                  interpreter of Aristotle before Averroes.
+                </li>
+              </ul>
+              <h4>Why it mattered</h4>
+              <p>
+                Translated by Gerard of Cremona, the <em>Canon</em> anchored
+                the curricula of Montpellier, Bologna, and Padua; Nancy
+                Siraisi has traced its printings and commentaries in Italy well
+                into the 17th century — arguably the most influential single
+                medical text ever written.<sup class="fn"><a href="#ref-11">11</a>, <a href="#ref-15">15</a></sup>
+              </p>
+            </div>
+          </details>
+
+          <details class="card span-2">
+            <summary>
+              <span class="who">
+                <h3>Ibn al-Nafīs</h3>
+              </span>
+              <span class="dates">1213 – 1288 · Damascus, Cairo</span>
+              <p class="teaser">
+                Described the pulmonary circulation of the blood — three
+                centuries before European anatomists.
+              </p>
+            </summary>
+            <div class="card-body">
+              <h4>Contributions</h4>
+              <p>
+                In his <em>Commentary on Anatomy in Avicenna’s Canon</em>
+                (c. 1242), Ibn al-Nafīs rejected Galen’s claim that blood
+                passes through invisible pores in the heart’s septum. He
+                reasoned that the septum is solid, and that blood must travel
+                from the right ventricle <em>through the lungs</em> — where it
+                mixes with air — before returning to the left ventricle: the
+                pulmonary (lesser) circulation, stated clearly and argued
+                anatomically.<sup class="fn"><a href="#ref-10">10</a></sup>
+              </p>
+              <h4>Why it mattered</h4>
+              <p>
+                Michael Servetus (1553) and Realdo Colombo (1559) published the
+                same conclusion three centuries later; the Arabic priority was
+                only rediscovered in 1924, in a Berlin manuscript, by the
+                Egyptian physician Muhyī al-Dīn al-Tatāwī. Whether the European
+                accounts drew indirectly on Ibn al-Nafīs (a Latin translation
+                of some of his work existed) remains an open question — but the
+                episode is a standing caution about how histories of “firsts”
+                get written.<sup class="fn"><a href="#ref-10">10</a>, <a href="#ref-16">16</a></sup>
+              </p>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- VI · PHYSICS & OPTICS                                            -->
+    <!-- ================================================================ -->
+    <section class="section section--band" id="optics" aria-labelledby="h-optics">
+      <div class="section-inner">
+        <span class="eyebrow">VI · Physics &amp; Optics</span>
+        <h2 id="h-optics">The first experimentalist</h2>
+        <p class="lede">
+          If a single book marks the beginning of experimental physics, a
+          strong case can be made for the <em>Book of Optics</em>, written in
+          Cairo around a thousand years ago.
+        </p>
+
+        <div class="card-grid">
+          <details class="card span-2" open>
+            <summary>
+              <span class="who">
+                <h3>Ibn al-Haytham</h3>
+                <span class="latin">Latin: Alhazen / Alhacen</span>
+              </span>
+              <span class="dates">c. 965 – c. 1040 · Basra, Cairo</span>
+              <p class="teaser">
+                Settled a seven-century dispute about vision — by experiment —
+                and wrote the method down.
+              </p>
+            </summary>
+            <div class="card-body">
+              <h4>Life</h4>
+              <p>
+                Born in Basra, Ibn al-Haytham came to Cairo under the Fatimid
+                caliph al-Ḥākim — by one famous account after rashly proposing
+                to regulate the Nile’s floods, then feigning madness when the
+                project proved impossible. During years of quiet disgrace he
+                wrote his masterpiece, the seven-book
+                <em>Kitāb al-Manāẓir</em> (<em>Book of Optics</em>, composed
+                c. 1011–1021).<sup class="fn"><a href="#ref-12">12</a>, <a href="#ref-18">18</a></sup>
+              </p>
+              <h4>Contributions</h4>
+              <ul>
+                <li>
+                  <strong>Vision solved.</strong> Greek theory was split between
+                  “extramission” (the eye emits rays) and “intromission” (the
+                  eye receives them). Ibn al-Haytham demolished extramission
+                  with arguments and experiments — afterimages, pain from
+                  staring at the sun — and built a mathematically rigorous
+                  intromission theory: light travels in straight lines from
+                  every point of an object into the eye.<sup class="fn"><a href="#ref-12">12</a>, <a href="#ref-3">3</a></sup>
+                </li>
+                <li>
+                  <strong>The camera obscura</strong> (<em>al-bayt
+                  al-muẓlim</em>, “the dark room”) analysed quantitatively:
+                  image formation through small apertures, used to study
+                  eclipses — the ancestor of every camera.<sup class="fn"><a href="#ref-12">12</a></sup>
+                </li>
+                <li>
+                  <strong>Method.</strong> Controlled, repeatable experiments
+                  with apparatus (dark chambers, tubes, mirrors) combined with
+                  geometric proof; he writes explicitly that the inquirer into
+                  the sciences must be “an adversary of all he reads,”
+                  submitting every claim to demonstration and test.<sup class="fn"><a href="#ref-12">12</a></sup>
+                </li>
+                <li>
+                  <strong>“Alhazen’s problem”:</strong> given a light source and
+                  a spherical mirror, find the reflection point — a quartic
+                  problem he solved geometrically; a full algebraic solution
+                  waited until the 20th century. He also weighed in on
+                  refraction, atmospheric optics, and the perceived enlargement
+                  of the moon at the horizon as a psychological effect.<sup class="fn"><a href="#ref-3">3</a>, <a href="#ref-12">12</a></sup>
+                </li>
+              </ul>
+              <h4>Why it mattered</h4>
+              <p>
+                Translated into Latin around 1200 as <em>De aspectibus</em> and
+                printed by Friedrich Risner in 1572 as the
+                <em>Opticae thesaurus</em>, the book shaped Roger Bacon,
+                Witelo, and Pecham, and stands directly behind Kepler’s theory
+                of the retinal image (1604). David Lindberg’s history of
+                optics treats him as the pivotal figure between antiquity and
+                Kepler; the historian of science A. I. Sabra, his editor and
+                translator, called the <em>Optics</em> a work that changed the
+                very standard of what counts as proof in natural science.<sup class="fn"><a href="#ref-3">3</a>, <a href="#ref-12">12</a></sup>
+              </p>
+            </div>
+          </details>
+        </div>
+
+        <div class="reveal">
+          <p style="margin-top:1.6rem">
+            Beyond optics, Arabic natural philosophy probed motion and weight:
+            <strong>Ibn Sīnā’s</strong> concept of <em>mayl</em> (inclination)
+            and <strong>Abū al-Barakāt al-Baghdādī’s</strong> critique of
+            Aristotelian dynamics fed the medieval impetus theory that
+            preceded inertia; <strong>al-Bīrūnī</strong> and
+            <strong>al-Khāzinī</strong> measured specific gravities of metals
+            and gems with hydrostatic balances to remarkable precision.<sup class="fn"><a href="#ref-5">5</a>, <a href="#ref-16">16</a></sup>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- VII · CHEMISTRY                                                  -->
+    <!-- ================================================================ -->
+    <section class="section" id="chemistry" aria-labelledby="h-chem">
+      <div class="section-inner">
+        <svg class="girih-divider" viewBox="0 0 340 44" aria-hidden="true">
+          <path d="M0 22 H100 L118 4 L136 22 L118 40 Z M136 22 H150 L170 2 L190 22 L170 42 Z M190 22 H204 L222 4 L240 22 L222 40 Z M240 22 H340"/>
+          <circle cx="170" cy="22" r="5"/>
+        </svg>
+        <span class="eyebrow">VII · Chemistry</span>
+        <h2 id="h-chem">Al-kīmiyāʾ: the workshop tradition</h2>
+        <p class="lede">
+          Chemistry’s very name — like <em>alkali</em>, <em>alcohol</em>,
+          <em>alembic</em>, and <em>elixir</em> — is Arabic. So is its founding
+          habit: judging theory by what happens over the fire.
+        </p>
+
+        <div class="card-grid">
+          <details class="card span-2">
+            <summary>
+              <span class="who">
+                <h3>Jābir ibn Ḥayyān</h3>
+                <span class="latin">Latin: Geber</span>
+              </span>
+              <span class="dates">fl. 8th century (corpus 8th–10th c.) · Kufa</span>
+              <p class="teaser">
+                The name over the door of Arabic alchemy — and a corpus that
+                turned mystical art toward laboratory practice.
+              </p>
+            </summary>
+            <div class="card-body">
+              <h4>The corpus</h4>
+              <p>
+                Tradition makes Jābir a student of the Shīʿī imam Jaʿfar
+                al-Ṣādiq in 8th-century Kufa; modern scholarship (beginning
+                with Paul Kraus) regards the enormous Jābirian corpus — nearly
+                three thousand titles are attributed — as the product of a
+                school writing into the 10th century. Either way, the corpus
+                defined Arabic alchemy.<sup class="fn"><a href="#ref-13">13</a>, <a href="#ref-18">18</a></sup>
+              </p>
+              <h4>Contributions</h4>
+              <ul>
+                <li>
+                  Systematic descriptions of laboratory operations —
+                  distillation, sublimation, crystallisation, calcination — and
+                  of apparatus including the alembic
+                  (<em>al-inbīq</em>), giving alchemy a reproducible technical
+                  vocabulary.<sup class="fn"><a href="#ref-13">13</a></sup>
+                </li>
+                <li>
+                  The sulphur–mercury theory of metals: all metals as
+                  combinations of two principles differing in purity and
+                  proportion — the reigning theory of matter’s composition
+                  until the 18th century.<sup class="fn"><a href="#ref-13">13</a></sup>
+                </li>
+                <li>
+                  An insistence, quoted across the corpus, that the worker must
+                  perform experiments — knowledge in this art belongs to those
+                  who labour at the bench, not those who merely read.
+                </li>
+              </ul>
+              <h4>Why it mattered</h4>
+              <p>
+                Latin Europe knew “Geber” as the supreme chemical authority;
+                the 13th-century <em>Summa perfectionis</em>, written under his
+                name (probably by Paul of Taranto), became the West’s standard
+                chemistry textbook. Lawrence Principe’s history places the
+                Arabic workshop tradition squarely at the root of experimental
+                chemistry.<sup class="fn"><a href="#ref-13">13</a></sup>
+              </p>
+            </div>
+          </details>
+        </div>
+
+        <div class="reveal">
+          <p style="margin-top:1.6rem">
+            The tradition’s second pillar is <strong>al-Rāzī</strong> — the
+            same physician of Section V — whose <em>Book of Secrets</em>
+            (<em>Kitāb al-Asrār</em>) drops mystical allegory almost entirely:
+            it inventories substances in a rational classification (mineral,
+            vegetable, animal; spirits, metals, stones, vitriols, boraxes,
+            salts), lists apparatus piece by piece, and gives recipes precise
+            enough to follow. Distillation technology matured in this milieu —
+            including the distillation of wine noted by later authors, from
+            which Europe would take both the technique and the word
+            <em>alcohol</em> (<span class="arabic" lang="ar" dir="rtl">الكحل</span>,
+            <em>al-kuḥl</em>).<sup class="fn"><a href="#ref-13">13</a>, <a href="#ref-16">16</a></sup>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- VIII · PHILOSOPHY                                                -->
+    <!-- ================================================================ -->
+    <section class="section section--band" id="philosophy" aria-labelledby="h-phil">
+      <div class="section-inner">
+        <span class="eyebrow">VIII · Philosophy of Knowledge</span>
+        <h2 id="h-phil">Faith, reason, and the framing of science</h2>
+        <p class="lede">
+          The Qurʾan repeatedly commands its readers to observe and reflect —
+          “Do they not look at the camels, how they are created; and the sky,
+          how it is raised?” (Q 88:17–18) — and the civilisation took the
+          command seriously.
+        </p>
+
+        <div class="reveal">
+          <p>
+            Science in Islam did not grow in spite of religion in some neutral
+            secular space; it grew inside a religious culture that prized
+            knowledge (<em>ʿilm</em>) as a virtue, that needed astronomy and
+            arithmetic for its rituals and law, and whose jurists developed —
+            in <em>ijtihād</em>, disciplined independent reasoning — a
+            methodological self-confidence that carried over into natural
+            inquiry. Verses invoking the signs (<em>āyāt</em>) in creation
+            “for a people who reflect” (e.g. Q 3:190–191) supplied a standing
+            theological warrant for studying nature.<sup class="fn"><a href="#ref-16">16</a>, <a href="#ref-17">17</a></sup>
+            The philosophical tradition (<em>falsafa</em>) begun by
+            <strong>al-Kindī</strong> (c. 801–873) and systematised by
+            <strong>al-Fārābī</strong> (c. 872–950) argued explicitly that
+            demonstrative reason and revelation, rightly understood, cannot
+            ultimately conflict.
+          </p>
+        </div>
+
+        <div class="card-grid">
+
+          <details class="card">
+            <summary>
+              <span class="who">
+                <h3>Al-Ghazālī</h3>
+                <span class="latin">Latin: Algazel</span>
+              </span>
+              <span class="dates">1058 – 1111 · Tus, Baghdad</span>
+              <p class="teaser">
+                The theologian who audited philosophy — and whose alleged
+                “killing of science” is a myth worth examining.
+              </p>
+            </summary>
+            <div class="card-body">
+              <h4>The argument</h4>
+              <p>
+                In <em>Tahāfut al-Falāsifa</em> (<em>The Incoherence of the
+                Philosophers</em>, c. 1095), al-Ghazālī attacked twenty theses
+                of the Aristotelian philosophers — above all the world’s
+                eternity and the denial of bodily resurrection — and, famously,
+                the claim that fire <em>necessarily</em> burns cotton. Causal
+                connection, he argued, is not logically necessary; God’s
+                custom (<em>ʿāda</em>) sustains the regularities we observe.<sup class="fn"><a href="#ref-14">14</a></sup>
+              </p>
+              <h4>The reassessment</h4>
+              <p>
+                The old story — Ghazālī discredits philosophy, Islamic science
+                dies — fails on the evidence: he explicitly defends the
+                certainty of mathematics and logic, warns believers not to deny
+                demonstrated astronomy (such as the geometry of eclipses) in
+                religion’s name, and the two centuries <em>after</em> him
+                produced Maragheh, Ibn al-Nafīs, and Ibn al-Shāṭir. Frank
+                Griffel’s study presents him as reconciling Avicennan science
+                with theology rather than abolishing it; Saliba makes the
+                institutional case against the decline myth.<sup class="fn"><a href="#ref-2">2</a>, <a href="#ref-14">14</a></sup>
+              </p>
+            </div>
+          </details>
+
+          <details class="card">
+            <summary>
+              <span class="who">
+                <h3>Ibn Rushd</h3>
+                <span class="latin">Latin: Averroes</span>
+              </span>
+              <span class="dates">1126 – 1198 · Córdoba, Marrakesh</span>
+              <p class="teaser">
+                Judge, physician, and “The Commentator” — Europe’s teacher of
+                Aristotle, and al-Ghazālī’s great respondent.
+              </p>
+            </summary>
+            <div class="card-body">
+              <h4>The reply</h4>
+              <p>
+                A chief judge (<em>qāḍī</em>) of Córdoba and court physician,
+                Ibn Rushd answered al-Ghazālī point by point in
+                <em>Tahāfut al-Tahāfut</em> (<em>The Incoherence of the
+                Incoherence</em>) and argued in the <em>Decisive Treatise</em>
+                that the sharīʿa itself makes philosophical study obligatory
+                for those capable of it: since truth is one, demonstration and
+                revelation cannot truly disagree, and apparent conflicts call
+                for interpretation.<sup class="fn"><a href="#ref-14">14</a>, <a href="#ref-18">18</a></sup>
+              </p>
+              <h4>Why it mattered</h4>
+              <p>
+                His line of commentaries on Aristotle — three tiers, from
+                epitome to detailed exposition — was translated into Latin and
+                Hebrew within decades and became the standard apparatus through
+                which medieval Europe read Aristotle at all. “Averroism”
+                convulsed the University of Paris in the 13th century; Aquinas
+                wrote against him, Dante placed him honourably in Limbo. His
+                medical summa <em>al-Kulliyyāt</em> (Latin <em>Colliget</em>)
+                circulated alongside the Canon.<sup class="fn"><a href="#ref-3">3</a>, <a href="#ref-15">15</a></sup>
+              </p>
+            </div>
+          </details>
+
+        </div>
+
+        <div class="reveal">
+          <p style="margin-top:1.6rem">
+            The honest summary is neither “Islam invented the scientific
+            method” nor “theology strangled science,” but something more
+            interesting: a civilisation in which the religious impulse to seek
+            knowledge, the legal culture of disciplined reasoning, and massive
+            state patronage together sustained the world’s most productive
+            scientific tradition for over half a millennium — and in which the
+            debates about reason’s reach were carried on at the highest level
+            on <em>both</em> sides. Ahmad Dallal’s Yale lectures are the best
+            short guide to that balance.<sup class="fn"><a href="#ref-16">16</a></sup>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- IX · LEGACY                                                      -->
+    <!-- ================================================================ -->
+    <section class="section" id="legacy" aria-labelledby="h-legacy">
+      <div class="section-inner">
+        <svg class="girih-divider" viewBox="0 0 340 44" aria-hidden="true">
+          <path d="M0 22 H100 L118 4 L136 22 L118 40 Z M136 22 H150 L170 2 L190 22 L170 42 Z M190 22 H204 L222 4 L240 22 L222 40 Z M240 22 H340"/>
+          <circle cx="170" cy="22" r="5"/>
+        </svg>
+        <span class="eyebrow">IX · Legacy &amp; Impact</span>
+        <h2 id="h-legacy">What Europe learned to say in Arabic</h2>
+        <p class="lede">
+          The transmission was concrete: named translators, in named cities,
+          rendering named books — many still bearing Arabic words.
+        </p>
+
+        <div class="reveal">
+          <p>
+            The main gate was <strong>Toledo</strong>, reconquered in 1085 with
+            its Arabic libraries intact. Through the 12th century a
+            translation industry grew there — Gerard of Cremona alone is
+            credited by his students with over seventy works, including
+            Ptolemy’s <em>Almagest</em> (from Arabic, c. 1175), al-Khwārizmī’s
+            algebra, Avicenna’s <em>Canon</em>, and al-Rāzī. Charles Burnett
+            has shown how deliberately coherent this programme was — a
+            curriculum being imported wholesale.<sup class="fn"><a href="#ref-15">15</a></sup>
+            The second gate was <strong>Sicily and southern Italy</strong>
+            under Norman and Hohenstaufen rule, trilingual and curious;
+            Leonardo of Pisa — <strong>Fibonacci</strong> — learned the
+            “nine Indian figures” from Arabic arithmetic in Béjaïa and spread
+            them in his <em>Liber Abaci</em> (1202).<sup class="fn"><a href="#ref-3">3</a>, <a href="#ref-17">17</a></sup>
+          </p>
+          <p>
+            The intellectual debts run deeper than vocabulary: the university
+            medical curriculum was built on Avicenna and al-Rāzī for
+            centuries;<sup class="fn"><a href="#ref-11">11</a></sup> Kepler’s
+            optics answers Alhazen;<sup class="fn"><a href="#ref-3">3</a></sup>
+            and the mathematical machinery of <em>De revolutionibus</em> — the
+            Ṭūsī couple, the Ibn al-Shāṭir lunar model — was worked out in
+            Maragheh and Damascus, as Swerdlow and Neugebauer’s technical
+            study of Copernicus details.<sup class="fn"><a href="#ref-9">9</a>, <a href="#ref-19">19</a></sup>
+            Even our star maps talk in Arabic: Aldebaran, Altair, Deneb, Rigel,
+            Vega, Betelgeuse.
+          </p>
+        </div>
+
+        <h3 style="margin-top:2.4rem">A pocket lexicon</h3>
+        <dl class="word-grid reveal">
+          <div class="word"><dt>algebra <span class="arabic" lang="ar" dir="rtl">الجبر</span></dt><dd><em>al-jabr</em>, “restoration” — from the title of al-Khwārizmī’s book.</dd></div>
+          <div class="word"><dt>algorithm</dt><dd>from <em>Algoritmi</em>, the Latin form of al-Khwārizmī’s name.</dd></div>
+          <div class="word"><dt>chemistry <span class="arabic" lang="ar" dir="rtl">الكيمياء</span></dt><dd><em>al-kīmiyāʾ</em>, via medieval Latin <em>alchimia</em>.</dd></div>
+          <div class="word"><dt>alkali <span class="arabic" lang="ar" dir="rtl">القلي</span></dt><dd><em>al-qalī</em>, calcined plant ashes — the first bases.</dd></div>
+          <div class="word"><dt>alcohol <span class="arabic" lang="ar" dir="rtl">الكحل</span></dt><dd><em>al-kuḥl</em>, a fine powder; later, any distilled essence.</dd></div>
+          <div class="word"><dt>alembic <span class="arabic" lang="ar" dir="rtl">الإنبيق</span></dt><dd><em>al-inbīq</em>, the still-head of the distillation apparatus.</dd></div>
+          <div class="word"><dt>elixir <span class="arabic" lang="ar" dir="rtl">الإكسير</span></dt><dd><em>al-iksīr</em>, the transmuting agent of the alchemists.</dd></div>
+          <div class="word"><dt>zenith</dt><dd>from <em>samt al-raʾs</em>, “the direction of the head.”</dd></div>
+          <div class="word"><dt>nadir <span class="arabic" lang="ar" dir="rtl">نظير</span></dt><dd><em>naẓīr</em>, “the opposite point.”</dd></div>
+          <div class="word"><dt>azimuth <span class="arabic" lang="ar" dir="rtl">السموت</span></dt><dd><em>al-sumūt</em>, “the directions.”</dd></div>
+          <div class="word"><dt>cipher / zero <span class="arabic" lang="ar" dir="rtl">صفر</span></dt><dd><em>ṣifr</em>, “empty” — the Indian zero in Arabic dress.</dd></div>
+          <div class="word"><dt>Aldebaran <span class="arabic" lang="ar" dir="rtl">الدبران</span></dt><dd><em>al-dabarān</em>, “the follower” (of the Pleiades) — one of dozens of Arabic star names.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- X · FURTHER READING                                              -->
+    <!-- ================================================================ -->
+    <section class="section section--band" id="reading" aria-labelledby="h-reading">
+      <div class="section-inner">
+        <span class="eyebrow">X · Further Reading</span>
+        <h2 id="h-reading">The shelf</h2>
+        <p class="lede">
+          A curated ladder, from a first evening’s reading to the technical
+          literature. Everything below is a real, findable book or paper.
+        </p>
+
+        <div class="biblio reveal">
+
+          <details open>
+            <summary>Start here</summary>
+            <div class="b-body">
+              <ul>
+                <li>Jim Al-Khalili, <em>Pathfinders: The Golden Age of Arabic Science</em> (Penguin, 2010). <span class="b-note">The best popular one-volume tour, by a physicist.</span></li>
+                <li>George Saliba, <em>Islamic Science and the Making of the European Renaissance</em> (MIT Press, 2007). <span class="b-note">Short, sharp, and myth-busting on both the origins and the “decline.”</span></li>
+                <li>Ahmad Dallal, <em>Islam, Science, and the Challenge of History</em> (Yale, 2010). <span class="b-note">The science–religion relationship, handled with precision.</span></li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>General histories &amp; the translation movement</summary>
+            <div class="b-body">
+              <ul>
+                <li>Dimitri Gutas, <em>Greek Thought, Arabic Culture</em> (Routledge, 1998). <span class="b-note">The standard account of why the translation movement happened.</span></li>
+                <li>David C. Lindberg, <em>The Beginnings of Western Science</em>, 2nd ed. (Chicago, 2007). <span class="b-note">Places Islamic science within the long arc from Athens to 1450.</span></li>
+                <li>Roshdi Rashed (ed.), <em>Encyclopedia of the History of Arabic Science</em>, 3 vols. (Routledge, 1996). <span class="b-note">Discipline-by-discipline reference by specialists.</span></li>
+                <li><em>Encyclopaedia of Islam</em>, 2nd &amp; 3rd eds. (Brill). <span class="b-note">The scholarly reference for biographies and technical terms.</span></li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>By discipline</summary>
+            <div class="b-body">
+              <ul>
+                <li><strong>Mathematics:</strong> J. L. Berggren, <em>Episodes in the Mathematics of Medieval Islam</em>, 2nd ed. (Springer, 2016). <span class="b-note">Works the actual mathematics, accessibly.</span></li>
+                <li><strong>Astronomy:</strong> David A. King, <em>In Synchrony with the Heavens</em>, 2 vols. (Brill, 2004–05); E. S. Kennedy, “A Survey of Islamic Astronomical Tables” (1956).</li>
+                <li><strong>Medicine:</strong> Peter E. Pormann &amp; Emilie Savage-Smith, <em>Medieval Islamic Medicine</em> (Edinburgh, 2007). <span class="b-note">The standard modern survey.</span></li>
+                <li><strong>Chemistry:</strong> Lawrence M. Principe, <em>The Secrets of Alchemy</em> (Chicago, 2013), chs. 2–3.</li>
+                <li><strong>Philosophy:</strong> Frank Griffel, <em>Al-Ghazālī’s Philosophical Theology</em> (Oxford, 2009); Peter Adamson, <em>Philosophy in the Islamic World</em> (Oxford, 2016).</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>Primary texts in translation</summary>
+            <div class="b-body">
+              <ul>
+                <li>A. I. Sabra (trans.), <em>The Optics of Ibn al-Haytham, Books I–III: On Direct Vision</em> (Warburg Institute, 1989).</li>
+                <li>Frederic Rosen (trans.), <em>The Algebra of Mohammed ben Musa</em> (1831; reprints available) — al-Khwārizmī’s founding text in English.</li>
+                <li>W. A. Greenhill (trans.), al-Rāzī, <em>A Treatise on the Small-Pox and Measles</em> (Sydenham Society, 1848).</li>
+                <li>Ibn Rushd, <em>The Book of the Decisive Treatise</em>, trans. Charles Butterworth (Brigham Young UP, 2001) — bilingual edition.</li>
+                <li>Al-Ghazālī, <em>The Incoherence of the Philosophers</em>, trans. Michael Marmura (Brigham Young UP, 2000) — bilingual edition.</li>
+                <li>F. Jamil Ragep, <em>Naṣīr al-Dīn al-Ṭūsī’s Memoir on Astronomy</em>, 2 vols. (Springer, 1993) — edition, translation, and commentary on the Ṭūsī couple.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>Transmission to Europe</summary>
+            <div class="b-body">
+              <ul>
+                <li>Charles Burnett, “The Coherence of the Arabic–Latin Translation Program in Toledo in the Twelfth Century,” <em>Science in Context</em> 14 (2001).</li>
+                <li>Nancy G. Siraisi, <em>Avicenna in Renaissance Italy</em> (Princeton, 1987).</li>
+                <li>N. M. Swerdlow &amp; O. Neugebauer, <em>Mathematical Astronomy in Copernicus’s De Revolutionibus</em> (Springer, 1984). <span class="b-note">Technical, but the definitive treatment of the Maragheh–Copernicus connection.</span></li>
+                <li>Victor Roberts, “The Solar and Lunar Theory of Ibn ash-Shāṭir,” <em>Isis</em> 48 (1957). <span class="b-note">The paper that started the Copernicus comparison.</span></li>
+              </ul>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- XI · REFERENCES                                                  -->
+    <!-- ================================================================ -->
+    <section class="section refs" id="references" aria-labelledby="h-refs">
+      <div class="section-inner">
+        <span class="eyebrow">XI · References</span>
+        <h2 id="h-refs">Notes</h2>
+        <p class="lede">Superscript numbers in the text point here.</p>
+        <ol>
+          <li id="ref-1">Dimitri Gutas, <em>Greek Thought, Arabic Culture: The Graeco-Arabic Translation Movement in Baghdad and Early ʿAbbāsid Society</em>. London: Routledge, 1998.</li>
+          <li id="ref-2">George Saliba, <em>Islamic Science and the Making of the European Renaissance</em>. Cambridge, MA: MIT Press, 2007.</li>
+          <li id="ref-3">David C. Lindberg, <em>The Beginnings of Western Science</em>, 2nd ed. Chicago: University of Chicago Press, 2007; and Lindberg, <em>Theories of Vision from al-Kindi to Kepler</em>. Chicago, 1976.</li>
+          <li id="ref-4">J. L. Berggren, <em>Episodes in the Mathematics of Medieval Islam</em>, 2nd ed. New York: Springer, 2016.</li>
+          <li id="ref-5">Roshdi Rashed (ed.), <em>Encyclopedia of the History of Arabic Science</em>, 3 vols. London: Routledge, 1996.</li>
+          <li id="ref-6">E. S. Kennedy, “A Survey of Islamic Astronomical Tables,” <em>Transactions of the American Philosophical Society</em> 46/2 (1956).</li>
+          <li id="ref-7">David A. King, <em>In Synchrony with the Heavens: Studies in Astronomical Timekeeping and Instrumentation in Medieval Islamic Civilization</em>, 2 vols. Leiden: Brill, 2004–05.</li>
+          <li id="ref-8">F. Jamil Ragep, <em>Naṣīr al-Dīn al-Ṭūsī’s Memoir on Astronomy (al-Tadhkira fī ʿilm al-hayʾa)</em>, 2 vols. New York: Springer, 1993.</li>
+          <li id="ref-9">Victor Roberts, “The Solar and Lunar Theory of Ibn ash-Shāṭir: A Pre-Copernican Copernican Model,” <em>Isis</em> 48/4 (1957): 428–432.</li>
+          <li id="ref-10">Peter E. Pormann &amp; Emilie Savage-Smith, <em>Medieval Islamic Medicine</em>. Edinburgh: Edinburgh University Press, 2007.</li>
+          <li id="ref-11">Nancy G. Siraisi, <em>Avicenna in Renaissance Italy: The Canon and Medical Teaching in Italian Universities after 1500</em>. Princeton: Princeton University Press, 1987.</li>
+          <li id="ref-12">A. I. Sabra (ed. &amp; trans.), <em>The Optics of Ibn al-Haytham, Books I–III: On Direct Vision</em>, 2 vols. London: Warburg Institute, 1989.</li>
+          <li id="ref-13">Lawrence M. Principe, <em>The Secrets of Alchemy</em>. Chicago: University of Chicago Press, 2013.</li>
+          <li id="ref-14">Frank Griffel, <em>Al-Ghazālī’s Philosophical Theology</em>. Oxford: Oxford University Press, 2009.</li>
+          <li id="ref-15">Charles Burnett, “The Coherence of the Arabic–Latin Translation Program in Toledo in the Twelfth Century,” <em>Science in Context</em> 14/1–2 (2001): 249–288.</li>
+          <li id="ref-16">Ahmad Dallal, <em>Islam, Science, and the Challenge of History</em>. New Haven: Yale University Press, 2010.</li>
+          <li id="ref-17">Jim Al-Khalili, <em>Pathfinders: The Golden Age of Arabic Science</em>. London: Penguin, 2010.</li>
+          <li id="ref-18"><em>Encyclopaedia of Islam</em>, 2nd &amp; 3rd editions. Leiden: Brill (articles: al-Khwārizmī; al-Rāzī; Ibn Sīnā; Ibn al-Haytham; Djābir b. Ḥayyān; Ibn Rushd; al-Zahrāwī).</li>
+          <li id="ref-19">N. M. Swerdlow &amp; O. Neugebauer, <em>Mathematical Astronomy in Copernicus’s De Revolutionibus</em>. New York: Springer, 1984.</li>
+        </ol>
+        <p style="margin-top:1.4rem; font-size:.86rem; color:var(--ink-faint)">
+          A note on dates and names: transliterations follow common scholarly
+          usage; life dates for early figures are often approximate, and where
+          sources disagree the ranges above follow the <em>Encyclopaedia of
+          Islam</em>. Corrections are welcome.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <span class="arabic" lang="ar" dir="rtl">طلب العلم فريضة</span>
+      <p>“Seeking knowledge is an obligation” — ḥadīth, Sunan Ibn Mājah.</p>
+      <p>A personal reading companion · built as a static page for GitHub Pages · no trackers, no cookies (the theme choice is stored locally in your browser).</p>
+    </footer>
+
+  </main>
+</div>
+
+</body>
+</html>
