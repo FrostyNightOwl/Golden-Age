@@ -13,6 +13,10 @@
 
 <link rel="stylesheet" href="style.css">
 <script src="script.js" defer></script>
+<script src="particles.js" defer></script>
+<script src="math-canvas.js" defer></script>
+<script src="astro-canvas.js" defer></script>
+<script src="med-canvas.js" defer></script>
 </head>
 <body>
 
@@ -67,6 +71,7 @@
     <!-- HERO                                                             -->
     <!-- ================================================================ -->
     <header class="hero">
+      <canvas id="heroCanvas"></canvas>
       <div class="hero-inner">
         <div>
           <p class="bismillah" lang="ar" dir="rtl">اِقْرَأْ</p>
@@ -354,6 +359,7 @@
     <!-- III · MATHEMATICS                                                -->
     <!-- ================================================================ -->
     <section class="section" id="mathematics" aria-labelledby="h-math">
+      <canvas id="mathCanvas" class="section-bg-canvas"></canvas>
       <div class="section-inner">
         <svg class="girih-divider" viewBox="0 0 340 44" aria-hidden="true">
           <path d="M0 22 H100 L118 4 L136 22 L118 40 Z M136 22 H150 L170 2 L190 22 L170 42 Z M190 22 H204 L222 4 L240 22 L222 40 Z M240 22 H340"/>
@@ -539,6 +545,7 @@
     <!-- IV · ASTRONOMY                                                   -->
     <!-- ================================================================ -->
     <section class="section section--band" id="astronomy" aria-labelledby="h-astro">
+      <canvas id="astroCanvas" class="section-bg-canvas"></canvas>
       <div class="section-inner">
         <span class="eyebrow">IV · Astronomy</span>
         <h2 id="h-astro">Reading the sky, correcting Ptolemy</h2>
@@ -716,6 +723,7 @@
     <!-- V · MEDICINE                                                     -->
     <!-- ================================================================ -->
     <section class="section" id="medicine" aria-labelledby="h-med">
+      <canvas id="medCanvas" class="section-bg-canvas"></canvas>
       <div class="section-inner">
         <svg class="girih-divider" viewBox="0 0 340 44" aria-hidden="true">
           <path d="M0 22 H100 L118 4 L136 22 L118 40 Z M136 22 H150 L170 2 L190 22 L170 42 Z M190 22 H204 L222 4 L240 22 L222 40 Z M240 22 H340"/>

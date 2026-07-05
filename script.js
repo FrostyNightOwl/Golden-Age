@@ -158,4 +158,88 @@
     star.style.animationDelay = (Math.random() * 4).toFixed(2) + "s";
     star.style.animationDuration = (2.5 + Math.random() * 3).toFixed(2) + "s";
   });
+
+  /* ---------- 6. 3D Interactions & Parallax --------------------------------- */
+
+  if (!reduceMotion) {
+    // Astrolabe mouse tracking
+    var astrolabe = document.querySelector(".astrolabe");
+    var hero = document.querySelector(".hero");
+    
+    if (astrolabe && hero) {
+      hero.addEventListener("mousemove", function(e) {
+        var rect = hero.getBoundingClientRect();
+        var x = e.clientX - rect.left; 
+        var y = e.clientY - rect.top;  
+        
+        var centerX = rect.width / 2;
+        var centerY = rect.height / 2;
+        
+        // Calculate tilt (max 15 degrees)
+        var tiltX = ((y - centerY) / centerY) * -15;
+        var tiltY = ((x - centerX) / centerX) * 15;
+        
+        astrolabe.style.setProperty("--tilt-x", tiltX + "deg");
+        astrolabe.style.setProperty("--tilt-y", tiltY + "deg");
+      });
+      
+      hero.addEventListener("mouseleave", function() {
+        astrolabe.style.setProperty("--tilt-x", "0deg");
+        astrolabe.style.setProperty("--tilt-y", "0deg");
+      });
+    }
+
+    // Parallax scrolling for Astrolabe wrapper
+    var astrolabeWrap = document.querySelector(".astrolabe-wrap");
+    if (astrolabeWrap) {
+      var tickingParallax = false;
+      window.addEventListener("scroll", function() {
+        if (!tickingParallax) {
+          window.requestAnimationFrame(function() {
+            var scrolled = window.scrollY;
+            if (scrolled < window.innerHeight) {
+              astrolabeWrap.style.transform = "translateY(" + (scrolled * 0.15) + "px)";
+            }
+            tickingParallax = false;
+          });
+          tickingParallax = true;
+        }
+      }, { passive: true });
+    }
+
+    // 3D Tilt for Scholar Cards
+    var cards = document.querySelectorAll("details.card");
+    cards.forEach(function(card) {
+      card.addEventListener("mousemove", function(e) {
+        if (card.hasAttribute("open")) return;
+        
+        var rect = card.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var y = e.clientY - rect.top;
+        
+        var centerX = rect.width / 2;
+        var centerY = rect.height / 2;
+        
+        // Max tilt of 6 degrees
+        var rotateX = ((y - centerY) / centerY) * -6;
+        var rotateY = ((x - centerX) / centerX) * 6;
+        
+        card.style.setProperty("--rotate-x", rotateX + "deg");
+        card.style.setProperty("--rotate-y", rotateY + "deg");
+      });
+      
+      card.addEventListener("mouseleave", function() {
+        card.style.setProperty("--rotate-x", "0deg");
+        card.style.setProperty("--rotate-y", "0deg");
+      });
+      
+      // Reset tilt when opened
+      card.addEventListener("toggle", function() {
+        if (card.hasAttribute("open")) {
+          card.style.setProperty("--rotate-x", "0deg");
+          card.style.setProperty("--rotate-y", "0deg");
+        }
+      });
+    });
+  }
 })();
